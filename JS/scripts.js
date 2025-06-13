@@ -11,50 +11,76 @@ class OscillatorUnit {
     this.attachEvents();
   }
 
-  createDOM(label) {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'oscillator-box';
+createDOM(label) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'oscillator-box';
 
-    const title = document.createElement('h2');
-    title.textContent = label;
+  const header = document.createElement('div');
+  header.style.display = 'flex';
+  header.style.justifyContent = 'space-between';
+  header.style.alignItems = 'flex-start';
 
-    const freqLabel = document.createElement('label');
-    freqLabel.textContent = 'Frequency (Hz):';
+  const title = document.createElement('h2');
+  title.textContent = label;
+  title.style.margin = '0';
+  title.style.fontSize = '1rem';
 
-    const freqInput = document.createElement('input');
-    freqInput.type = 'number';
-    freqInput.min = '20';
-    freqInput.max = '20000';
-    freqInput.step = 'any';
-    freqInput.value = '440';
+  const waveformSelect = document.createElement('select');
+  ['sine', 'triangle', 'square', 'sawtooth'].forEach(type => {
+    const option = document.createElement('option');
+    option.value = type;
+    option.textContent = type.charAt(0).toUpperCase() + type.slice(1);
+    waveformSelect.appendChild(option);
+  });
+  waveformSelect.value = 'sine';
 
-    const freqSlider = document.createElement('input');
-    freqSlider.type = 'range';
-    freqSlider.min = '20';
-    freqSlider.max = '20000';
-    freqSlider.step = '1';
-    freqSlider.value = '440';
+  header.appendChild(title);
+  header.appendChild(waveformSelect);
 
-    const startBtn = document.createElement('button');
-    startBtn.textContent = 'Start';
+  const freqLabel = document.createElement('label');
+  freqLabel.textContent = 'Frequency (Hz):';
 
-    const stopBtn = document.createElement('button');
-    stopBtn.textContent = 'Stop';
-    stopBtn.disabled = true;
+  const freqInput = document.createElement('input');
+  freqInput.type = 'number';
+  freqInput.min = '20';
+  freqInput.max = '20000';
+  freqInput.step = 'any';
+  freqInput.value = '440';
 
-    wrapper.append(title, freqLabel, freqInput, freqSlider, startBtn, stopBtn);
+  const freqSlider = document.createElement('input');
+  freqSlider.type = 'range';
+  freqSlider.min = '20';
+  freqSlider.max = '20000';
+  freqSlider.step = '1';
+  freqSlider.value = '440';
 
-    return {
-      wrapper,
+  const startBtn = document.createElement('button');
+  startBtn.textContent = 'Start';
+
+  const stopBtn = document.createElement('button');
+  stopBtn.textContent = 'Stop';
+  stopBtn.disabled = true;
+
+  wrapper.append(header, freqLabel, freqInput, freqSlider, startBtn, stopBtn);
+
+  return {
+    wrapper,
+    waveformSelect,
+    freqInput,
+    freqSlider,
+    startBtn,
+    stopBtn
+  };
+}
+
+  attachEvents() {
+    const {
       freqInput,
       freqSlider,
       startBtn,
-      stopBtn
-    };
-  }
-
-  attachEvents() {
-    const { freqInput, freqSlider, startBtn, stopBtn } = this.elements;
+      stopBtn,
+      waveformSelect
+    } = this.elements;
 
     const clampFrequency = (val) => {
       const num = parseFloat(val);
@@ -95,12 +121,30 @@ class OscillatorUnit {
       }
     });
 
+    waveformSelect.addEventListener('change', () => {
+      if (this.oscillator) {
+        const currentFreq = clampFrequency(freqInput.value);
+        this.oscillator.stop();
+        this.oscillator.disconnect();
+        this.oscillator = null;
+
+        // Small timeout to allow proper teardown
+        setTimeout(() => {
+          this.oscillator = this.audioCtx.createOscillator();
+          this.oscillator.type = waveformSelect.value;
+          this.oscillator.frequency.setValueAtTime(currentFreq, this.audioCtx.currentTime);
+          this.oscillator.connect(this.gainNode).connect(this.audioCtx.destination);
+          this.oscillator.start();
+        }, 10);
+      }
+    });
+
     startBtn.addEventListener('click', () => {
       if (this.oscillator) return;
 
       const freq = clampFrequency(freqInput.value);
       this.oscillator = this.audioCtx.createOscillator();
-      this.oscillator.type = 'sine';
+      this.oscillator.type = waveformSelect.value;
       this.oscillator.frequency.setValueAtTime(freq, this.audioCtx.currentTime);
       this.oscillator.connect(this.gainNode).connect(this.audioCtx.destination);
       this.oscillator.start();
