@@ -4,12 +4,29 @@ body {
   background: #f4f4f4;
 }
 
-input[type="range"] {
+h1 {
+  margin-bottom: 2rem;
+}
+
+.oscillator-box {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+
+.oscillator-box h2 {
+  margin-top: 0;
+}
+
+input[type="range"], input[type="number"] {
   width: 100%;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 label {
   display: block;
-  margin-top: 1rem;
+  margin: 1rem 0 0.5rem;
 }
