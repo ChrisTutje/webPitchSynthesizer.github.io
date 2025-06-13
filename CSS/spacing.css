@@ -1,0 +1,31 @@
+:root {
+    --spacing-extra-extra-small: .236em;
+    --spacing-extra-small: .382em;
+    --spacing-small: .618em;
+    --spacing-medium: 1em;
+    --spacing-large: 1.618em;
+    --spacing-extra-large: 2.618em;
+    --spacing-extra-extra-large: 4.236em;
+
+    --spacing-extra-extra-small-extra-small: .300em;
+    --spacing-extra-small-small: .486em;
+    --spacing-small-medium: .786em;
+    --spacing-medium-large: 1.272em;
+    --spacing-large-extra-large: 2.058em;
+    --spacing-extra-large-extra-extra-large: 3.330em;
+
+    --spacing-xxs: .236em;
+    --spacing-xs: .382em;
+    --spacing-s: .618em;
+    --spacing-m: 1em;
+    --spacing-l: 1.618em;
+    --spacing-xl: 2.618em;
+    --spacing-xxl: 4.236em;
+
+    --spacing-xxs-xs: .300em;
+    --spacing-xs-s: .486em;
+    --spacing-s-m: .786em;
+    --spacing-m-l: 1.272em;
+    --spacing-l-xl: 2.058em;
+    --spacing-xl-xxl: 3.330em;
+}
