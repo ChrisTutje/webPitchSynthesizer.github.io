@@ -11,14 +11,13 @@ h1 {
 .oscillator-box {
   border: 2px solid #ccc;
   border-radius: 8px;
-  background: #fff;
   padding: 1rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+  background-color: #f4f4f4;
+  margin-bottom: 1rem;
+  width: 300px;
 }
-
 .oscillator-box h2 {
-  margin-top: 0;
+  font-weight: bold;
 }
 
 input[type="range"], input[type="number"] {
