@@ -24,7 +24,6 @@ function drawVisualizer() {
   for (let i = 0; i < bufferLength; i++) {
     const v = dataArray[i] / 128.0;
     const y = (v * canvas.height) / 2;
-
     i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
     x += sliceWidth;
   }
@@ -35,6 +34,7 @@ function drawVisualizer() {
 
 drawVisualizer();
 
+const pitchPresets = window.pitchPresets;
 class OscillatorUnit {
   constructor(container, label) {
     this.oscillator = null;
@@ -76,6 +76,15 @@ class OscillatorUnit {
     const freqLabel = document.createElement('label');
     freqLabel.textContent = 'Frequency (Hz):';
 
+    const pitchDropdown = document.createElement('select');
+    pitchDropdown.appendChild(new Option('Select pitch', ''));
+    for (const name in pitchPresets) {
+      const option = document.createElement('option');
+      option.value = pitchPresets[name];
+      option.textContent = name;
+      pitchDropdown.appendChild(option);
+    }
+
     const freqInput = document.createElement('input');
     freqInput.type = 'number';
     freqInput.min = '20';
@@ -116,7 +125,7 @@ class OscillatorUnit {
 
     wrapper.append(
       header,
-      freqLabel, freqInput, freqSlider,
+      freqLabel, pitchDropdown, freqInput, freqSlider,
       volLabel, volInput, volSlider,
       startBtn, stopBtn
     );
@@ -124,6 +133,7 @@ class OscillatorUnit {
     return {
       wrapper,
       waveformSelect,
+      pitchDropdown,
       freqInput,
       freqSlider,
       volInput,
@@ -138,7 +148,7 @@ class OscillatorUnit {
       freqInput, freqSlider,
       volInput, volSlider,
       startBtn, stopBtn,
-      waveformSelect
+      waveformSelect, pitchDropdown
     } = this.elements;
 
     const clampFrequency = (val) => {
@@ -169,34 +179,38 @@ class OscillatorUnit {
       this.gainNode.gain.setValueAtTime(clamped, sharedAudioCtx.currentTime);
     };
 
+    pitchDropdown.addEventListener('change', () => {
+      const hz = pitchDropdown.value;
+      if (hz) updateFrequency(hz);
+    });
+
     freqSlider.addEventListener('input', () => updateFrequency(freqSlider.value));
 
-freqInput.addEventListener('input', () => {
-  // Just sync slider without clamping
-  const raw = freqInput.value;
-  const num = parseFloat(raw);
-  if (!isNaN(num)) {
-    freqSlider.value = num;
-    if (this.oscillator) {
-      this.oscillator.frequency.setValueAtTime(num, sharedAudioCtx.currentTime);
-    }
-  }
-});
+    freqInput.addEventListener('input', () => {
+      const raw = freqInput.value;
+      const num = parseFloat(raw);
+      if (!isNaN(num)) {
+        freqSlider.value = num;
+        if (this.oscillator) {
+          this.oscillator.frequency.setValueAtTime(num, sharedAudioCtx.currentTime);
+        }
+      }
+    });
 
-freqInput.addEventListener('blur', () => {
-  const clamped = clampFrequency(freqInput.value);
-  freqInput.value = clamped;
-  freqSlider.value = clamped;
-  if (this.oscillator) {
-    this.oscillator.frequency.setValueAtTime(clamped, sharedAudioCtx.currentTime);
-  }
-});
+    freqInput.addEventListener('blur', () => {
+      const clamped = clampFrequency(freqInput.value);
+      freqInput.value = clamped;
+      freqSlider.value = clamped;
+      if (this.oscillator) {
+        this.oscillator.frequency.setValueAtTime(clamped, sharedAudioCtx.currentTime);
+      }
+    });
 
-freqInput.addEventListener('keydown', e => {
-  if (e.key === 'Enter') {
-    freqInput.blur();
-  }
-});
+    freqInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        freqInput.blur();
+      }
+    });
 
     volSlider.addEventListener('input', () => updateVolume(volSlider.value));
     volInput.addEventListener('input', () => {
