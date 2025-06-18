@@ -75,31 +75,33 @@ class OscillatorUnit {
     const freqLabel = document.createElement('label');
     freqLabel.textContent = 'Frequency (Hz):';
 
+    const pitchContainer = document.createElement('div');
+    pitchContainer.style.display = 'flex';
+    pitchContainer.style.gap = '8px';
+
+    const pitchDropdown = document.createElement('select');
+    pitchDropdown.appendChild(new Option('Select pitch', ''));
+    pitchPresets.slice().sort((a, b) => a.hz - b.hz).forEach(pitch => {
+      const option = document.createElement('option');
+      option.value = pitch.hz;
+      option.textContent = pitch.name;
+      option.dataset.category = pitch.category;
+      option.style.color = pitch.textColor;
+      option.style.backgroundColor = pitch.backgroundColor;
+      pitchDropdown.appendChild(option);
+    });
+
     const categoryFilter = document.createElement('select');
     categoryFilter.appendChild(new Option('All Categories', ''));
-    [...new Set(window.pitchPresets.map(p => p.category))].forEach(cat => {
-      const opt = new Option(cat.charAt(0).toUpperCase() + cat.slice(1), cat);
+    [...new Set(pitchPresets.map(p => p.category))].forEach(cat => {
+      const opt = document.createElement('option');
+      opt.value = cat;
+      opt.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
       categoryFilter.appendChild(opt);
     });
 
-    const pitchDropdown = document.createElement('select');
-    const populateDropdown = (category = '') => {
-      pitchDropdown.innerHTML = '';
-      const defaultOption = new Option('Select pitch', '');
-      defaultOption.style.color = 'black';
-      defaultOption.style.backgroundColor = 'white';
-      pitchDropdown.appendChild(defaultOption);
-      const sorted = window.pitchPresets
-        .filter(p => !category || p.category === category)
-        .sort((a, b) => a.hz - b.hz);
-      for (const pitch of sorted) {
-        const opt = new Option(pitch.name, pitch.hz);
-        opt.style.color = pitch.textColor;
-        opt.style.backgroundColor = pitch.backgroundColor;
-        pitchDropdown.appendChild(opt);
-      }
-    };
-    populateDropdown();
+    pitchContainer.appendChild(pitchDropdown);
+    pitchContainer.appendChild(categoryFilter);
 
     const freqInput = document.createElement('input');
     freqInput.type = 'number';
@@ -141,16 +143,9 @@ class OscillatorUnit {
 
     wrapper.append(
       header,
-      freqLabel,
-      categoryFilter,
-      pitchDropdown,
-      freqInput,
-      freqSlider,
-      volLabel,
-      volInput,
-      volSlider,
-      startBtn,
-      stopBtn
+      freqLabel, pitchContainer, freqInput, freqSlider,
+      volLabel, volInput, volSlider,
+      startBtn, stopBtn
     );
 
     return {
@@ -175,19 +170,10 @@ class OscillatorUnit {
       waveformSelect, pitchDropdown, categoryFilter
     } = this.elements;
 
-    const clampFrequency = (val) => {
-      const num = parseFloat(val);
-      if (isNaN(num)) return 440;
-      return Math.min(20000, Math.max(20, num));
-    };
+    const clampFrequency = val => Math.min(20000, Math.max(20, parseFloat(val) || 440));
+    const clampVolume = val => Math.min(1, Math.max(0, parseFloat(val) || 0.5));
 
-    const clampVolume = (val) => {
-      const num = parseFloat(val);
-      if (isNaN(num)) return 0.5;
-      return Math.min(1, Math.max(0, num));
-    };
-
-    const updateFrequency = (val) => {
+    const updateFrequency = val => {
       const clamped = clampFrequency(val);
       freqInput.value = clamped;
       freqSlider.value = clamped;
@@ -196,92 +182,69 @@ class OscillatorUnit {
       }
     };
 
-    const updateVolume = (val) => {
+    const updateVolume = val => {
       const clamped = clampVolume(val);
       volInput.value = clamped;
       volSlider.value = clamped;
       this.gainNode.gain.setValueAtTime(clamped, sharedAudioCtx.currentTime);
     };
 
-    categoryFilter.addEventListener('change', () => {
-      const cat = categoryFilter.value;
-      const populate = this.createDOM('').elements.pitchDropdown;
-      this.elements.pitchDropdown.replaceWith(populate);
-    });
-
     pitchDropdown.addEventListener('change', () => {
       const hz = pitchDropdown.value;
       if (hz) updateFrequency(hz);
     });
 
+    categoryFilter.addEventListener('change', () => {
+      const selected = categoryFilter.value;
+      Array.from(pitchDropdown.options).forEach(opt => {
+        if (!opt.value) return;
+        const cat = opt.dataset.category;
+        opt.hidden = selected && cat !== selected;
+      });
+    });
+
     freqSlider.addEventListener('input', () => updateFrequency(freqSlider.value));
     freqInput.addEventListener('input', () => {
-      const raw = freqInput.value;
-      const num = parseFloat(raw);
+      const val = freqInput.value;
+      const num = parseFloat(val);
       if (!isNaN(num)) {
         freqSlider.value = num;
-        if (this.oscillator) {
-          this.oscillator.frequency.setValueAtTime(num, sharedAudioCtx.currentTime);
-        }
+        if (this.oscillator) this.oscillator.frequency.setValueAtTime(num, sharedAudioCtx.currentTime);
       }
     });
-    freqInput.addEventListener('blur', () => {
-      const clamped = clampFrequency(freqInput.value);
-      freqInput.value = clamped;
-      freqSlider.value = clamped;
-      if (this.oscillator) {
-        this.oscillator.frequency.setValueAtTime(clamped, sharedAudioCtx.currentTime);
-      }
-    });
-    freqInput.addEventListener('keydown', e => {
-      if (e.key === 'Enter') {
-        freqInput.blur();
-      }
-    });
+    freqInput.addEventListener('blur', () => updateFrequency(freqInput.value));
+    freqInput.addEventListener('keydown', e => { if (e.key === 'Enter') freqInput.blur(); });
 
     volSlider.addEventListener('input', () => updateVolume(volSlider.value));
-    volInput.addEventListener('input', () => {
-      if (volInput.value === '') return;
-      updateVolume(volInput.value);
-    });
+    volInput.addEventListener('input', () => { if (volInput.value !== '') updateVolume(volInput.value); });
     volInput.addEventListener('blur', () => updateVolume(volInput.value));
-    volInput.addEventListener('keydown', e => {
-      if (e.key === 'Enter') {
-        updateVolume(volInput.value);
-        volInput.blur();
-      }
-    });
+    volInput.addEventListener('keydown', e => { if (e.key === 'Enter') volInput.blur(); });
 
     waveformSelect.addEventListener('change', () => {
-      if (this.oscillator) {
-        const freq = clampFrequency(freqInput.value);
-        this.oscillator.stop();
-        this.oscillator.disconnect();
-        this.oscillator = null;
-
-        setTimeout(() => {
-          this.oscillator = sharedAudioCtx.createOscillator();
-          this.oscillator.type = waveformSelect.value;
-          this.oscillator.frequency.setValueAtTime(freq, sharedAudioCtx.currentTime);
-          this.oscillator.connect(this.gainNode).connect(sharedAnalyser).connect(sharedAudioCtx.destination);
-          this.oscillator.start();
-        }, 10);
-      }
+      if (!this.oscillator) return;
+      const freq = clampFrequency(freqInput.value);
+      this.oscillator.stop();
+      this.oscillator.disconnect();
+      this.oscillator = null;
+      setTimeout(() => {
+        this.oscillator = sharedAudioCtx.createOscillator();
+        this.oscillator.type = waveformSelect.value;
+        this.oscillator.frequency.setValueAtTime(freq, sharedAudioCtx.currentTime);
+        this.oscillator.connect(this.gainNode).connect(sharedAnalyser).connect(sharedAudioCtx.destination);
+        this.oscillator.start();
+      }, 10);
     });
 
     startBtn.addEventListener('click', () => {
       if (this.oscillator) return;
-
       const freq = clampFrequency(freqInput.value);
       const vol = clampVolume(volInput.value);
-
       this.oscillator = sharedAudioCtx.createOscillator();
       this.oscillator.type = waveformSelect.value;
       this.oscillator.frequency.setValueAtTime(freq, sharedAudioCtx.currentTime);
       this.gainNode.gain.setValueAtTime(vol, sharedAudioCtx.currentTime);
       this.oscillator.connect(this.gainNode).connect(sharedAnalyser).connect(sharedAudioCtx.destination);
       this.oscillator.start();
-
       startBtn.disabled = true;
       stopBtn.disabled = false;
     });
