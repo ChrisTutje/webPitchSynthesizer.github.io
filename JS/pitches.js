@@ -20,10 +20,10 @@ window.pitchPresets = [
   { name: 'Ad4', hz: 427.47, category: 'neutral', textColor: 'cyan', backgroundColor: 'red' },
   { name: 'Bd4', hz: 479.82, category: 'neutral', textColor: 'cyan', backgroundColor: 'red' },
 
-  { name: 'Dbd4', hz: 269.29, category: 'neutral', textColor: 'red', backgroundColor: 'cyan' },
-  { name: 'Edb4', hz: 302.27, category: 'neutral', textColor: 'red', backgroundColor: 'cyan' },
-  { name: 'Fd4', hz: 339.29, category: 'neutral', textColor: 'red', backgroundColor: 'cyan' },
-  { name: 'Adb4', hz: 403.48, category: 'neutral', textColor: 'red', backgroundColor: 'cyan' },
-  { name: 'Bdb4', hz: 452.89, category: 'neutral', textColor: 'red', backgroundColor: 'cyan' },
-  { name: 'Cd4', hz: 508.36, category: 'neutral', textColor: 'red', backgroundColor: 'cyan' },
+  { name: 'Dbd4', hz: 269.29, category: 'quarter', textColor: 'red', backgroundColor: 'cyan' },
+  { name: 'Edb4', hz: 302.27, category: 'quarter', textColor: 'red', backgroundColor: 'cyan' },
+  { name: 'Fd4', hz: 339.29, category: 'quarter', textColor: 'red', backgroundColor: 'cyan' },
+  { name: 'Adb4', hz: 403.48, category: 'quarter', textColor: 'red', backgroundColor: 'cyan' },
+  { name: 'Bdb4', hz: 452.89, category: 'quarter', textColor: 'red', backgroundColor: 'cyan' },
+  { name: 'Cd4', hz: 508.36, category: 'quarter', textColor: 'red', backgroundColor: 'cyan' },
 ];
