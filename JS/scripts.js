@@ -125,7 +125,7 @@ class OscillatorUnit {
     volInput.min = '0';
     volInput.max = '1';
     volInput.step = '0.01';
-    volInput.value = '0.5';
+    volInput.value = '0.25';
 
     const volSlider = document.createElement('input');
     volSlider.type = 'range';
