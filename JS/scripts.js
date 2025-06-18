@@ -34,7 +34,6 @@ function drawVisualizer() {
 
 drawVisualizer();
 
-const pitchPresets = window.pitchPresets;
 class OscillatorUnit {
   constructor(container, label) {
     this.oscillator = null;
@@ -76,14 +75,31 @@ class OscillatorUnit {
     const freqLabel = document.createElement('label');
     freqLabel.textContent = 'Frequency (Hz):';
 
+    const categoryFilter = document.createElement('select');
+    categoryFilter.appendChild(new Option('All Categories', ''));
+    [...new Set(window.pitchPresets.map(p => p.category))].forEach(cat => {
+      const opt = new Option(cat.charAt(0).toUpperCase() + cat.slice(1), cat);
+      categoryFilter.appendChild(opt);
+    });
+
     const pitchDropdown = document.createElement('select');
-    pitchDropdown.appendChild(new Option('Select pitch', ''));
-    for (const name in pitchPresets) {
-      const option = document.createElement('option');
-      option.value = pitchPresets[name];
-      option.textContent = name;
-      pitchDropdown.appendChild(option);
-    }
+    const populateDropdown = (category = '') => {
+      pitchDropdown.innerHTML = '';
+      const defaultOption = new Option('Select pitch', '');
+      defaultOption.style.color = 'black';
+      defaultOption.style.backgroundColor = 'white';
+      pitchDropdown.appendChild(defaultOption);
+      const sorted = window.pitchPresets
+        .filter(p => !category || p.category === category)
+        .sort((a, b) => a.hz - b.hz);
+      for (const pitch of sorted) {
+        const opt = new Option(pitch.name, pitch.hz);
+        opt.style.color = pitch.textColor;
+        opt.style.backgroundColor = pitch.backgroundColor;
+        pitchDropdown.appendChild(opt);
+      }
+    };
+    populateDropdown();
 
     const freqInput = document.createElement('input');
     freqInput.type = 'number';
@@ -125,15 +141,23 @@ class OscillatorUnit {
 
     wrapper.append(
       header,
-      freqLabel, pitchDropdown, freqInput, freqSlider,
-      volLabel, volInput, volSlider,
-      startBtn, stopBtn
+      freqLabel,
+      categoryFilter,
+      pitchDropdown,
+      freqInput,
+      freqSlider,
+      volLabel,
+      volInput,
+      volSlider,
+      startBtn,
+      stopBtn
     );
 
     return {
       wrapper,
       waveformSelect,
       pitchDropdown,
+      categoryFilter,
       freqInput,
       freqSlider,
       volInput,
@@ -148,7 +172,7 @@ class OscillatorUnit {
       freqInput, freqSlider,
       volInput, volSlider,
       startBtn, stopBtn,
-      waveformSelect, pitchDropdown
+      waveformSelect, pitchDropdown, categoryFilter
     } = this.elements;
 
     const clampFrequency = (val) => {
@@ -179,13 +203,18 @@ class OscillatorUnit {
       this.gainNode.gain.setValueAtTime(clamped, sharedAudioCtx.currentTime);
     };
 
+    categoryFilter.addEventListener('change', () => {
+      const cat = categoryFilter.value;
+      const populate = this.createDOM('').elements.pitchDropdown;
+      this.elements.pitchDropdown.replaceWith(populate);
+    });
+
     pitchDropdown.addEventListener('change', () => {
       const hz = pitchDropdown.value;
       if (hz) updateFrequency(hz);
     });
 
     freqSlider.addEventListener('input', () => updateFrequency(freqSlider.value));
-
     freqInput.addEventListener('input', () => {
       const raw = freqInput.value;
       const num = parseFloat(raw);
@@ -196,7 +225,6 @@ class OscillatorUnit {
         }
       }
     });
-
     freqInput.addEventListener('blur', () => {
       const clamped = clampFrequency(freqInput.value);
       freqInput.value = clamped;
@@ -205,7 +233,6 @@ class OscillatorUnit {
         this.oscillator.frequency.setValueAtTime(clamped, sharedAudioCtx.currentTime);
       }
     });
-
     freqInput.addEventListener('keydown', e => {
       if (e.key === 'Enter') {
         freqInput.blur();
