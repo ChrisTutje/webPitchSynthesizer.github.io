@@ -13,8 +13,8 @@ window.intervalPresets = [
   
   { name: 'Comma', symbol: '', ratio: '(3**12)/(2**19)', decimal: '1.0136', category: 'Pythagorean', textColor: 'black', backgroundColor: 'white' },
   { name: 'Limma', symbol: '', ratio: '(2**8)/(3**5)', decimal: '1.053', category: 'Pythagorean', textColor: 'black', backgroundColor: 'white' },
-  { name: 'Apotome', symbol: '', ratio: '(3**7)/2**11)', decimal: '1.068', category: 'Pythagorean', textColor: 'black', backgroundColor: 'white' },
-  { name: 'Ditone', symbol: '', ratio: '(3**4)/2**6)', decimal: '1.2656', category: 'Pythagorean', textColor: 'black', backgroundColor: 'white' },
+  { name: 'Apotome', symbol: '', ratio: '(3**7)/(2**11)', decimal: '1.068', category: 'Pythagorean', textColor: 'black', backgroundColor: 'white' },
+  { name: 'Ditone', symbol: '', ratio: '(3**4)/(2**6)', decimal: '1.2656', category: 'Pythagorean', textColor: 'black', backgroundColor: 'white' },
 
   { name: 'Semitone', symbol: '', ratio: 'Math.pow(2, 1/12)', decimal: '1.0595', category: '12-EDO', textColor: 'white', backgroundColor: 'black' },
   { name: 'Wholetone', symbol: '', ratio: 'Math.pow(2, 2/12)', decimal: '1.1225', category: '12-EDO', textColor: 'black', backgroundColor: 'white' },
