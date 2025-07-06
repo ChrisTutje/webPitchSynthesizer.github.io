@@ -11,6 +11,12 @@ window.intervalPresets = [
   { name: 'Minor-Second', symbol: 'ii', ratio: '16/15', decimal: '1.067', category: 'just-intonation', textColor: 'white', backgroundColor: 'black' },
   { name: 'Major-Seventh', symbol: 'VII', ratio: '15/8', decimal: '1.875', category: 'just-intonation', textColor: 'black', backgroundColor: 'white' },
   
+  { name: 'Septimal Minor Seventh', symbol: '7b7', ratio: '7/4', decimal: '1.75', category: 'just-intonation', textColor: 'white', backgroundColor: 'black' },
+  { name: 'Septimal Whole Tone', symbol: '', ratio: '8/7', decimal: '1.143', category: 'just-intonation', textColor: 'black', backgroundColor: 'white' },
+  { name: 'Undecimal Neutral Third', symbol: '', ratio: '11/9', decimal: '1.222', category: 'just-intonation', textColor: 'black', backgroundColor: 'white' },
+  { name: 'Septimal Tritone', symbol: '', ratio: '7/5', decimal: '1.4', category: 'just-intonation', textColor: 'white', backgroundColor: 'black' },
+  { name: 'Syntonic Comma', symbol: '', ratio: '81/80', decimal: '1.0125', category: 'just-intonation', textColor: 'black', backgroundColor: 'white' },
+  
   { name: 'Comma', symbol: '', ratio: '(3**12)/(2**19)', decimal: '1.0136', category: 'Pythagorean', textColor: 'black', backgroundColor: 'white' },
   { name: 'Limma', symbol: '', ratio: '(2**8)/(3**5)', decimal: '1.053', category: 'Pythagorean', textColor: 'black', backgroundColor: 'white' },
   { name: 'Apotome', symbol: '', ratio: '(3**7)/(2**11)', decimal: '1.068', category: 'Pythagorean', textColor: 'black', backgroundColor: 'white' },
@@ -28,8 +34,10 @@ window.intervalPresets = [
 
   { name: 'Quarter-tone', symbol: '', ratio: 'Math.pow(2, 1/24)', decimal: '1.0293', category: '24-EDO', textColor: 'black', backgroundColor: 'white' },
 
-  { name: 'True-Diesis', symbol: '', ratio: '128/125', decimal: '1.024', category: '31-EDO', textColor: 'black', backgroundColor: 'white' },
+  { name: 'Small-Diesis', symbol: '', ratio: '128/125', decimal: '1.024', category: '31-EDO', textColor: 'black', backgroundColor: 'white' },
   { name: 'Diesis', symbol: '', ratio: 'Math.pow(2, 1/31)', decimal: '1.0226', category: '31-EDO', textColor: 'black', backgroundColor: 'white' },
+
+  { name: 'Eighth-tone', symbol: '', ratio: 'Math.pow(2, 1/48)', decimal: '1.0144', category: '48-EDO', textColor: 'black', backgroundColor: 'white' },
 
   { name: '53-EDO', symbol: '', ratio: 'Math.pow(2, 1/53)', decimal: '1.013', category: '53-EDO', textColor: 'black', backgroundColor: 'white' },
 
