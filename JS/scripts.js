@@ -117,6 +117,50 @@ class OscillatorUnit {
     freqSlider.step = '1';
     freqSlider.value = '440';
 
+    const intervalLabel = document.createElement('label');
+    intervalLabel.textContent = 'Interval:';
+
+    const intervalContainer = document.createElement('div');
+    intervalContainer.style.display = 'flex';
+    intervalContainer.style.gap = '8px';
+
+    const intervalDropdown = document.createElement('select');
+    intervalDropdown.appendChild(new Option('Select interval', ''));
+intervalPresets
+  .slice()
+  .sort((a, b) => parseFloat(a.decimal) - parseFloat(b.decimal))
+  .forEach(interval => {
+    const option = document.createElement('option');
+    option.value = interval.ratio;
+    option.textContent = interval.name;
+    option.dataset.category = interval.category;
+    option.dataset.decimal = interval.decimal;
+    option.style.color = interval.textColor;
+    option.style.backgroundColor = interval.backgroundColor;
+    intervalDropdown.appendChild(option);
+  });
+
+    const intervalCategoryFilter = document.createElement('select');
+    intervalCategoryFilter.appendChild(new Option('All Categories', ''));
+    [...new Set(intervalPresets.map(i => i.category))].forEach(cat => {
+      const opt = document.createElement('option');
+      opt.value = cat;
+      opt.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+      intervalCategoryFilter.appendChild(opt);
+    });
+
+    const plusBtn = document.createElement('button');
+    plusBtn.textContent = '+';
+    plusBtn.style.backgroundColor = 'green';
+    plusBtn.style.color = 'white';
+
+    const minusBtn = document.createElement('button');
+    minusBtn.textContent = '−';
+    minusBtn.style.backgroundColor = 'red';
+    minusBtn.style.color = 'white';
+
+    intervalContainer.append(intervalDropdown, intervalCategoryFilter, plusBtn, minusBtn);
+
     const volLabel = document.createElement('label');
     volLabel.textContent = 'Volume (0.0 - 1.0):';
 
@@ -144,6 +188,7 @@ class OscillatorUnit {
     wrapper.append(
       header,
       freqLabel, pitchContainer, freqInput, freqSlider,
+      intervalLabel, intervalContainer,
       volLabel, volInput, volSlider,
       startBtn, stopBtn
     );
@@ -153,12 +198,16 @@ class OscillatorUnit {
       waveformSelect,
       pitchDropdown,
       categoryFilter,
+      intervalDropdown,
+      intervalCategoryFilter,
       freqInput,
       freqSlider,
       volInput,
       volSlider,
       startBtn,
-      stopBtn
+      stopBtn,
+      plusBtn,
+      minusBtn
     };
   }
 
@@ -167,7 +216,9 @@ class OscillatorUnit {
       freqInput, freqSlider,
       volInput, volSlider,
       startBtn, stopBtn,
-      waveformSelect, pitchDropdown, categoryFilter
+      waveformSelect, pitchDropdown, categoryFilter,
+      intervalDropdown, intervalCategoryFilter,
+      plusBtn, minusBtn
     } = this.elements;
 
     const clampFrequency = val => Math.min(20000, Math.max(20, parseFloat(val) || 440));
@@ -197,6 +248,15 @@ class OscillatorUnit {
     categoryFilter.addEventListener('change', () => {
       const selected = categoryFilter.value;
       Array.from(pitchDropdown.options).forEach(opt => {
+        if (!opt.value) return;
+        const cat = opt.dataset.category;
+        opt.hidden = selected && cat !== selected;
+      });
+    });
+
+    intervalCategoryFilter.addEventListener('change', () => {
+      const selected = intervalCategoryFilter.value;
+      Array.from(intervalDropdown.options).forEach(opt => {
         if (!opt.value) return;
         const cat = opt.dataset.category;
         opt.hidden = selected && cat !== selected;
@@ -257,6 +317,26 @@ class OscillatorUnit {
       }
       startBtn.disabled = false;
       stopBtn.disabled = true;
+    });
+
+    plusBtn.addEventListener('click', () => {
+      const r = intervalDropdown.value;
+      if (!r) return;
+      const f = clampFrequency(freqInput.value);
+      try {
+        const result = f * Function(`"use strict"; return (${r})`)();
+        updateFrequency(result);
+      } catch (e) { console.warn("Invalid interval ratio:", r); }
+    });
+
+    minusBtn.addEventListener('click', () => {
+      const r = intervalDropdown.value;
+      if (!r) return;
+      const f = clampFrequency(freqInput.value);
+      try {
+        const result = f / Function(`"use strict"; return (${r})`)();
+        updateFrequency(result);
+      } catch (e) { console.warn("Invalid interval ratio:", r); }
     });
   }
 }
