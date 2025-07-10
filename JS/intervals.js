@@ -15,31 +15,50 @@ window.intervalPresets = [
   { name: 'Septimal Whole Tone', symbol: '', ratio: '8/7', decimal: '1.143', category: 'just-intonation', textColor: 'black', backgroundColor: 'white' },
   { name: 'Undecimal Neutral Third', symbol: '', ratio: '11/9', decimal: '1.222', category: 'just-intonation', textColor: 'black', backgroundColor: 'white' },
   { name: 'Septimal Tritone', symbol: '', ratio: '7/5', decimal: '1.4', category: 'just-intonation', textColor: 'white', backgroundColor: 'black' },
-  { name: 'Syntonic Comma', symbol: '', ratio: '81/80', decimal: '1.0125', category: 'just-intonation', textColor: 'black', backgroundColor: 'white' },
+  { name: 'Undecimal subfifth', symbol: '', ratio: '16/11', decimal: '1.4545', category: 'just-intonation', textColor: 'white', backgroundColor: 'black' },
+  { name: 'Just-Semitone', symbol: '', ratio: '25/24', decimal: '1.0412', category: 'just-intonation', textColor: 'white', backgroundColor: 'black' },
+  { name: 'Neutral Second', symbol: '', ratio: '10/9', decimal: 1.111, category: 'just-intonation', textColor: 'black', backgroundColor: 'white' },
+  { name: 'Neutral Third', symbol: '', ratio: '11/9', decimal: 1.222, category: 'just-intonation', textColor: 'black', backgroundColor: 'white' },
   
-  { name: 'Comma', symbol: '', ratio: '(3**12)/(2**19)', decimal: '1.0136', category: 'Pythagorean', textColor: 'black', backgroundColor: 'white' },
+  { name: 'Pythagorean-Comma', symbol: '', ratio: '(3**12)/(2**19)', decimal: '1.0136', category: 'Pythagorean', textColor: 'black', backgroundColor: 'white' },
   { name: 'Limma', symbol: '', ratio: '(2**8)/(3**5)', decimal: '1.053', category: 'Pythagorean', textColor: 'black', backgroundColor: 'white' },
   { name: 'Apotome', symbol: '', ratio: '(3**7)/(2**11)', decimal: '1.068', category: 'Pythagorean', textColor: 'black', backgroundColor: 'white' },
   { name: 'Ditone', symbol: '', ratio: '(3**4)/(2**6)', decimal: '1.2656', category: 'Pythagorean', textColor: 'black', backgroundColor: 'white' },
 
-  { name: 'Semitone', symbol: '', ratio: 'Math.pow(2, 1/12)', decimal: '1.0595', category: '12-EDO', textColor: 'white', backgroundColor: 'black' },
-  { name: 'Wholetone', symbol: '', ratio: 'Math.pow(2, 2/12)', decimal: '1.1225', category: '12-EDO', textColor: 'black', backgroundColor: 'white' },
+  
+  { name: '5-EDO', symbol: '', ratio: 'Math.pow(2, 1/5)', decimal: '1.1487', category: '5-EDO', textColor: 'black', backgroundColor: 'white' },
+  
+  { name: '7-EDO', symbol: '', ratio: 'Math.pow(2, 1/7)', decimal: '1.1041', category: '7-EDO', textColor: 'black', backgroundColor: 'white' },
+  
+  { name: 'Cent', symbol: '', ratio: 'Math.pow(2, 1/1200)', decimal: '1.00058', category: '12-EDO', textColor: 'black', backgroundColor: 'white' },
+  { name: 'Chromatic-Semitone', symbol: '', ratio: 'Math.pow(2, 1/12)', decimal: '1.0595', category: '12-EDO', textColor: 'white', backgroundColor: 'black' },
+  { name: 'Chromatic-Wholetone', symbol: '', ratio: 'Math.pow(2, 2/12)', decimal: '1.1225', category: '12-EDO', textColor: 'black', backgroundColor: 'white' },
   { name: 'Tritone', symbol: 'v', ratio: 'Math.pow(2, 6/12)', decimal: '1.4142', category: '12-EDO', textColor: 'white', backgroundColor: 'black' },
 
+  { name: '16-edo', symbol: '', ratio: 'Math.pow(2, 1/16)', decimal: '1.0443', category: '16-EDO', textColor: 'black', backgroundColor: 'white' },
+  
   { name: '17-edo', symbol: '', ratio: 'Math.pow(2, 1/17)', decimal: '1.0416', category: '17-EDO', textColor: 'black', backgroundColor: 'white' },
-
+  
   { name: '19-edo', symbol: '', ratio: 'Math.pow(2, 1/19)', decimal: '1.037', category: '19-EDO', textColor: 'black', backgroundColor: 'white' },
-
-  { name: '22-edo', symbol: '', ratio: 'Math.pow(2, 1/22)', decimal: '1.032', category: '22-EDO', textColor: 'black', backgroundColor: 'white' },
-
+  
+  { name: 'Syntonic Comma', symbol: '', ratio: '81/80', decimal: '1.0125', category: '22-EDO', textColor: 'black', backgroundColor: 'white' },
+  { name: '22-edo Comma', symbol: '', ratio: 'Math.pow(2, 1/22)', decimal: '1.032', category: '22-EDO', textColor: 'black', backgroundColor: 'white' },
+  { name: 'Septimal Supermajor Third', symbol: '', ratio: '9/7', decimal: '1.2857', category: '22-EDO', textColor: 'white', backgroundColor: 'black' },
+  
   { name: 'Quarter-tone', symbol: '', ratio: 'Math.pow(2, 1/24)', decimal: '1.0293', category: '24-EDO', textColor: 'black', backgroundColor: 'white' },
 
+  { name: 'Fifth-tone', symbol: '', ratio: 'Math.pow(2, 1/40)', decimal: '1.0234', category: '30-EDO', textColor: 'black', backgroundColor: 'white' },
+  
   { name: 'Small-Diesis', symbol: '', ratio: '128/125', decimal: '1.024', category: '31-EDO', textColor: 'black', backgroundColor: 'white' },
   { name: 'Diesis', symbol: '', ratio: 'Math.pow(2, 1/31)', decimal: '1.0226', category: '31-EDO', textColor: 'black', backgroundColor: 'white' },
+  
+  { name: 'Sixth-tone', symbol: '', ratio: 'Math.pow(2, ((1/3)/12))', decimal: '1.0072', category: '36-EDO', textColor: 'black', backgroundColor: 'white' },
+
+  { name: '41-EDO', symbol: '', ratio: 'Math.pow(2, 1/41)', decimal: '1.017', category: '41-EDO', textColor: 'black', backgroundColor: 'white' },
 
   { name: 'Eighth-tone', symbol: '', ratio: 'Math.pow(2, 1/48)', decimal: '1.0144', category: '48-EDO', textColor: 'black', backgroundColor: 'white' },
 
-  { name: '53-EDO', symbol: '', ratio: 'Math.pow(2, 1/53)', decimal: '1.013', category: '53-EDO', textColor: 'black', backgroundColor: 'white' },
+  { name: 'Holdrian-comma', symbol: '', ratio: 'Math.pow(2, 1/53)', decimal: '1.013', category: '53-EDO', textColor: 'black', backgroundColor: 'white' },
 
   { name: 'Semi-Comma', symbol: '', ratio: 'Math.pow(2, 1/96)', decimal: '1.0072', category: '96-EDO', textColor: 'black', backgroundColor: 'white' },
 ];
