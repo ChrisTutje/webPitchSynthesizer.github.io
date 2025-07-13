@@ -29,11 +29,17 @@ window.intervalPresets = [
   { name: '5-EDO', symbol: '', ratio: 'Math.pow(2, 1/5)', decimal: '1.1487', category: '5-EDO', textColor: 'black', backgroundColor: 'white' },
   
   { name: '7-EDO', symbol: '', ratio: 'Math.pow(2, 1/7)', decimal: '1.1041', category: '7-EDO', textColor: 'black', backgroundColor: 'white' },
+
+  { name: '9-EDO', symbol: '', ratio: 'Math.pow(2, 1/9)', decimal: '1.08', category: '9-EDO', textColor: 'black', backgroundColor: 'white' },
+
+  { name: '10-EDO', symbol: '', ratio: 'Math.pow(2, 1/10)', decimal: '1.072', category: '10-EDO', textColor: 'black', backgroundColor: 'white' },
   
   { name: 'Cent', symbol: '', ratio: 'Math.pow(2, 1/1200)', decimal: '1.00058', category: '12-EDO', textColor: 'black', backgroundColor: 'white' },
   { name: 'Chromatic-Semitone', symbol: '', ratio: 'Math.pow(2, 1/12)', decimal: '1.0595', category: '12-EDO', textColor: 'white', backgroundColor: 'black' },
   { name: 'Chromatic-Wholetone', symbol: '', ratio: 'Math.pow(2, 2/12)', decimal: '1.1225', category: '12-EDO', textColor: 'black', backgroundColor: 'white' },
   { name: 'Tritone', symbol: 'v', ratio: 'Math.pow(2, 6/12)', decimal: '1.4142', category: '12-EDO', textColor: 'white', backgroundColor: 'black' },
+
+  { name: '15-EDO', symbol: '', ratio: 'Math.pow(2, 1/15)', decimal: '1.047', category: '15-EDO', textColor: 'black', backgroundColor: 'white' },
 
   { name: '16-edo', symbol: '', ratio: 'Math.pow(2, 1/16)', decimal: '1.0443', category: '16-EDO', textColor: 'black', backgroundColor: 'white' },
   
@@ -46,6 +52,8 @@ window.intervalPresets = [
   { name: 'Septimal Supermajor Third', symbol: '', ratio: '9/7', decimal: '1.2857', category: '22-EDO', textColor: 'white', backgroundColor: 'black' },
   
   { name: 'Quarter-tone', symbol: '', ratio: 'Math.pow(2, 1/24)', decimal: '1.0293', category: '24-EDO', textColor: 'black', backgroundColor: 'white' },
+
+  { name: '27-edo', symbol: '', ratio: 'Math.pow(2, 1/27)', decimal: '1.026', category: '27-EDO', textColor: 'black', backgroundColor: 'white' },
 
   { name: 'Fifth-tone', symbol: '', ratio: 'Math.pow(2, 1/40)', decimal: '1.0234', category: '30-EDO', textColor: 'black', backgroundColor: 'white' },
   
