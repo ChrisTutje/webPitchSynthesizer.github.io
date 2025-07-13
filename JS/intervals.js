@@ -40,7 +40,6 @@ window.intervalPresets = [
   { name: '22-edo Comma', symbol: '', ratio: 'Math.pow(2, 1/22)', decimal: '1.032', category: '22-EDO', textColor: 'black', backgroundColor: 'white' },
   { name: 'Septimal Supermajor Third', symbol: '', ratio: '9/7', decimal: '1.2857', category: '22-EDO', textColor: 'white', backgroundColor: 'black' },
   
-  
   { name: '27-edo', symbol: '', ratio: 'Math.pow(2, 1/27)', decimal: '1.026', category: '27-EDO', textColor: 'black', backgroundColor: 'white' },
   
   { name: '5-EDO', symbol: '', ratio: 'Math.pow(2, 1/5)', decimal: '1.1487', category: '30-EDO', textColor: 'black', backgroundColor: 'white' },
@@ -51,9 +50,9 @@ window.intervalPresets = [
   { name: 'Small-Diesis', symbol: '', ratio: '128/125', decimal: '1.024', category: '31-EDO', textColor: 'black', backgroundColor: 'white' },
   { name: 'Diesis', symbol: '', ratio: 'Math.pow(2, 1/31)', decimal: '1.0226', category: '31-EDO', textColor: 'black', backgroundColor: 'white' },
   
-  { name: '9-EDO', symbol: '', ratio: 'Math.pow(2, 1/9)', decimal: '1.08', category: '36-EDO', textColor: 'black', backgroundColor: 'white' },
-  { name: '18-EDO', symbol: '', ratio: 'Math.pow(2, 1/18)', decimal: '1.039', category: '36-EDO', textColor: 'black', backgroundColor: 'white' },
-  { name: 'Sixth-tone', symbol: '', ratio: 'Math.pow(2, ((1/3)/12))', decimal: '1.0174', category: '36-EDO', textColor: 'black', backgroundColor: 'white' },
+  { name: 'Sesquatone', symbol: '', ratio: 'Math.pow(2, 1/9)', decimal: '1.08', category: '36-EDO', textColor: 'black', backgroundColor: 'white' },
+  { name: 'Third-tone', symbol: '', ratio: 'Math.pow(2, 1/18)', decimal: '1.039', category: '36-EDO', textColor: 'black', backgroundColor: 'white' },
+  { name: 'Sixth-tone', symbol: '', ratio: 'Math.pow(2, 1/36))', decimal: '1.0174', category: '36-EDO', textColor: 'black', backgroundColor: 'white' },
   
   { name: '41-EDO', symbol: '', ratio: 'Math.pow(2, 1/41)', decimal: '1.017', category: '41-EDO', textColor: 'black', backgroundColor: 'white' },
   
