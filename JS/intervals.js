@@ -50,7 +50,7 @@ window.intervalPresets = [
   { name: 'Small-Diesis', symbol: '', ratio: '128/125', decimal: '1.024', category: '31-EDO', textColor: 'black', backgroundColor: 'white' },
   { name: 'Diesis', symbol: '', ratio: 'Math.pow(2, 1/31)', decimal: '1.0226', category: '31-EDO', textColor: 'black', backgroundColor: 'white' },
   
-  { name: 'Sesquatone', symbol: '', ratio: 'Math.pow(2, 1/9)', decimal: '1.08', category: '36-EDO', textColor: 'black', backgroundColor: 'white' },
+  { name: 'Sesquitone', symbol: '', ratio: 'Math.pow(2, 1/9)', decimal: '1.08', category: '36-EDO', textColor: 'black', backgroundColor: 'white' },
   { name: 'Third-tone', symbol: '', ratio: 'Math.pow(2, 1/18)', decimal: '1.039', category: '36-EDO', textColor: 'black', backgroundColor: 'white' },
   { name: 'Sixth-tone', symbol: '', ratio: 'Math.pow(2, 1/36))', decimal: '1.0174', category: '36-EDO', textColor: 'black', backgroundColor: 'white' },
   
