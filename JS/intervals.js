@@ -1,5 +1,5 @@
 window.intervalPresets = [
-  { name: 'Octave', symbol: 'I', ratio: '2/1', decimal: '2.000', category: 'just-intonation', textColor: 'orange', backgroundColor: 'white' },
+  { name: 'Octave', symbol: 'I', ratio: '2/1', decimal: '2.0', category: 'just-intonation', textColor: 'orange', backgroundColor: 'white' },
   { name: 'Perfect-Fifth', symbol: 'V', ratio: '3/2', decimal: '1.50', category: 'just-intonation', textColor: 'orange', backgroundColor: 'white' },
   { name: 'Perfect-Forth', symbol: 'IV', ratio: '4/3', decimal: '1.333', category: 'just-intonation', textColor: 'orange', backgroundColor: 'white' },
   { name: 'Major-Third', symbol: 'III', ratio: '5/4', decimal: '1.25', category: 'just-intonation', textColor: 'black', backgroundColor: 'white' },
@@ -31,6 +31,9 @@ window.intervalPresets = [
   { name: 'Chromatic-Semitone', symbol: '', ratio: 'Math.pow(2, 1/12)', decimal: '1.0595', category: '12-EDO', textColor: 'white', backgroundColor: 'black' },
   { name: 'Chromatic-Wholetone', symbol: '', ratio: 'Math.pow(2, 2/12)', decimal: '1.1225', category: '12-EDO', textColor: 'black', backgroundColor: 'white' },
   { name: 'Tritone', symbol: 'v', ratio: 'Math.pow(2, 6/12)', decimal: '1.4142', category: '12-EDO', textColor: 'white', backgroundColor: 'black' },
+
+  { name: '13-EDO', symbol: '', ratio: 'Math.pow(2, 1/13)', decimal: '1.0548', category: 'Bohlen-Pierce', textColor: 'white', backgroundColor: 'black' },
+  { name: 'Tritave', symbol: '', ratio: '3/1', decimal: '3.0', category: 'Bohlen-Pierce', textColor: 'orange', backgroundColor: 'white' },
   
   { name: '17-edo', symbol: '', ratio: 'Math.pow(2, 1/17)', decimal: '1.0416', category: '17-EDO', textColor: 'black', backgroundColor: 'white' },
   
