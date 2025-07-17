@@ -359,10 +359,19 @@ function populateChordDropdown() {
   });
 }
 
-function parseRatio(ratioStr) {
-  if (!ratioStr) return null;
-  const [numerator, denominator] = ratioStr.split('/').map(Number);
-  return denominator ? numerator / denominator : NaN;
+function parseRatio(expr) {
+  try {
+    // Try to parse basic fraction
+    if (/^\d+\/\d+$/.test(expr)) {
+      const [num, denom] = expr.split('/').map(Number);
+      return num / denom;
+    }
+    // Else, use Function constructor instead of eval (safer scope)
+    return Function(`"use strict"; return (${expr})`)();
+  } catch (e) {
+    console.error(`Invalid ratio expression: ${expr}`, e);
+    return NaN;
+  }
 }
 
 function applyChord() {
