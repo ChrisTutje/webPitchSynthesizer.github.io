@@ -26,6 +26,6 @@ window.chordPresets = [
   { name: '? Sixth', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: '5/4', thirdVoice: '3/2', fourthVoice: '8/5' },
   { name: 'Major Sixth', symbol: 'M6', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: '5/4', thirdVoice: '3/2', fourthVoice: '5/3' },
 
-  { name: 'Quartal Chord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: 'Math.pow(2, 5/12)', thirdVoice: 'Math.pow(2, 10/12)', fourthVoice: 'Math.pow(2, 15/12)' },
-  { name: 'Quintal Chord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: 'Math.pow(2, 7/12)', thirdVoice: 'Math.pow(2, 14/12)', fourthVoice: 'Math.pow(2, 21/12)' },
+  { name: 'Quartal Chord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: '4/3', thirdVoice: '16/9', fourthVoice: '64/27' },
+  { name: 'Quintal Chord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: '3/2', thirdVoice: '9/4', fourthVoice: '27/8' },
 ];
