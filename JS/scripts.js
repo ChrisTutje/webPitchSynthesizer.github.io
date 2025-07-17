@@ -342,6 +342,56 @@ intervalPresets
 }
 
 const container = document.getElementById('oscillator-container');
+window.oscillatorUnits = []; 
 for (let i = 1; i <= 4; i++) {
-  new OscillatorUnit(container, `Oscillator ${i}`);
+  window.oscillatorUnits.push(new OscillatorUnit(container, `Oscillator ${i}`));
 }
+
+function populateChordDropdown() {
+  const select = document.getElementById('chord-select');
+  window.chordPresets.forEach((chord, index) => {
+    const option = document.createElement('option');
+    option.value = index;
+    option.textContent = `${chord.name} (${chord.symbol})`;
+    option.style.color = chord.textColor;
+    option.style.backgroundColor = chord.backgroundColor;
+    select.appendChild(option);
+  });
+}
+
+function parseRatio(ratioStr) {
+  if (!ratioStr) return null;
+  const [numerator, denominator] = ratioStr.split('/').map(Number);
+  return denominator ? numerator / denominator : NaN;
+}
+
+function applyChord() {
+  const selectedIndex = document.getElementById('chord-select').value;
+  const chord = window.chordPresets[selectedIndex];
+  if (!chord) return;
+
+  const rootHz = parseFloat(oscillatorUnits[0]?.elements.freqInput.value);
+  if (!rootHz || isNaN(rootHz)) return;
+
+  const ratios = [
+    '1',
+    chord.secondVoice,
+    chord.thirdVoice,
+    chord.fourthVoice
+  ];
+
+  ratios.forEach((ratioStr, i) => {
+    const ratio = parseRatio(ratioStr);
+    if (oscillatorUnits[i] && ratio) {
+  const newFreq = rootHz * ratio;
+  oscillatorUnits[i].elements.freqInput.value = newFreq;
+  oscillatorUnits[i].elements.freqSlider.value = newFreq;
+  if (oscillatorUnits[i].oscillator) {
+    oscillatorUnits[i].oscillator.frequency.setValueAtTime(newFreq, sharedAudioCtx.currentTime);
+  }
+}
+  });
+}
+
+document.getElementById('apply-chord').addEventListener('click', applyChord);
+populateChordDropdown();
