@@ -70,6 +70,9 @@ window.intervalPresets = [
   { name: '10-EDO', symbol: '', ratio: 'Math.pow(2, 1/10)', decimal: '1.072', category: '30-EDO', textColor: 'black', backgroundColor: 'white' },
   { name: 'Sesqui-halftone', symbol: '', ratio: 'Math.pow(2, 1/15)', decimal: '1.047', category: '30-EDO', textColor: 'black', backgroundColor: 'white' },
   { name: 'Fifth-tone', symbol: '', ratio: 'Math.pow(2, 1/30)', decimal: '1.0234', category: '30-EDO', textColor: 'black', backgroundColor: 'white' },
+  { name: 'Two-Fifths-tone', symbol: '', ratio: 'Math.pow(2, 2/30)', decimal: '1.0473', category: '30-EDO', textColor: 'black', backgroundColor: 'white' },
+  { name: 'Three-Fifths-tone', symbol: '', ratio: 'Math.pow(2, 3/30)', decimal: '1.0718', category: '30-EDO', textColor: 'black', backgroundColor: 'white' },
+  { name: 'Four-Fifths-tone', symbol: '', ratio: 'Math.pow(2, 4/30)', decimal: '1.09682', category: '30-EDO', textColor: 'black', backgroundColor: 'white' },
   
   { name: 'Small-Diesis', symbol: '', ratio: '128/125', decimal: '1.024', category: '31-EDO', textColor: 'black', backgroundColor: 'white' },
   { name: 'Diesis', symbol: '', ratio: 'Math.pow(2, 1/31)', decimal: '1.0226', category: '31-EDO', textColor: 'black', backgroundColor: 'white' },
