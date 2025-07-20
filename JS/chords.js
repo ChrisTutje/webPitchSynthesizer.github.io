@@ -45,4 +45,22 @@ window.chordPresets = [
 
   { name: 'Quartal Chord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: '4/3', thirdVoice: '16/9', fourthVoice: '64/27' },
   { name: 'Quintal Chord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: '3/2', thirdVoice: '9/4', fourthVoice: '27/8' },
+
+  { name: 'Locrian Tetrachord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: 'Math.pow(2, 1/12)', thirdVoice: 'Math.pow(2, 3/12)', fourthVoice: 'Math.pow(2, 4/12)' },
+  { name: 'Phrygian Tetrachord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: 'Math.pow(2, 1/12)', thirdVoice: 'Math.pow(2, 3/12)', fourthVoice: 'Math.pow(2, 5/12)' },
+  { name: 'Aeolian Tetrachord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: 'Math.pow(2, 2/12)', thirdVoice: 'Math.pow(2, 3/12)', fourthVoice: 'Math.pow(2, 5/12)' },
+  { name: 'Ionian Tetrachord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: 'Math.pow(2, 2/12)', thirdVoice: 'Math.pow(2, 4/12)', fourthVoice: 'Math.pow(2, 5/12)' },
+  { name: 'Lydian Tetrachord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: 'Math.pow(2, 1/12)', thirdVoice: 'Math.pow(2, 3/12)', fourthVoice: 'Math.pow(2, 4/12)' },
+  { name: 'Harmonic Tetrachord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: 'Math.pow(2, 1/12)', thirdVoice: 'Math.pow(2, 4/12)', fourthVoice: 'Math.pow(2, 5/12)' },
+  { name: '? Tetrachord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: 'Math.pow(2, 2/12)', thirdVoice: 'Math.pow(2, 3/12)', fourthVoice: 'Math.pow(2, 6/12)' },
+  { name: 'Lydian#9 Tetrachord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: 'Math.pow(2, 3/12)', thirdVoice: 'Math.pow(2, 4/12)', fourthVoice: 'Math.pow(2, 6/12)' },
+  { name: 'Blues Tetrachord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: 'Math.pow(2, 3/12)', thirdVoice: 'Math.pow(2, 5/12)', fourthVoice: 'Math.pow(2, 6/12)' },
+  { name: 'Bayati Tetrachord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: 'Math.pow(2, 1.5/12)', thirdVoice: 'Math.pow(2, 3/12)', fourthVoice: 'Math.pow(2, 5/12)' },
+  { name: 'Saba Tetrachord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: 'Math.pow(2, 1.5/12)', thirdVoice: 'Math.pow(2, 3/12)', fourthVoice: 'Math.pow(2, 4/12)' },
+  { name: 'Rast Tetrachord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: 'Math.pow(2, 2/12)', thirdVoice: 'Math.pow(2, 3.5/12)', fourthVoice: 'Math.pow(2, 5/12)' },
+  { name: 'Hijaz Tetrachord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: 'Math.pow(2, 1.5/12)', thirdVoice: 'Math.pow(2, 4/12)', fourthVoice: 'Math.pow(2, 5/12)' },
+  { name: 'Sakura Tetrachord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: 'Math.pow(2, 1/12)', thirdVoice: 'Math.pow(2, 5/12)', fourthVoice: 'Math.pow(2, 7/12)' },
+  { name: '? Tetrachord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: 'Math.pow(2, 2/12)', thirdVoice: 'Math.pow(2, 5/12)', fourthVoice: 'Math.pow(2, 7/12)' },
+  { name: 'Kumoijoshi Tetrachord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: 'Math.pow(2, 3/12)', thirdVoice: 'Math.pow(2, 5/12)', fourthVoice: 'Math.pow(2, 7/12)' },
+  { name: '? Tetrachord', symbol: '', category: 'tetradic', textColor: 'black', backgroundColor: 'white', secondVoice: 'Math.pow(2, 4/12)', thirdVoice: 'Math.pow(2, 5/12)', fourthVoice: 'Math.pow(2, 7/12)' },
 ];
