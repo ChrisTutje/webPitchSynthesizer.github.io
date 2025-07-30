@@ -70,8 +70,6 @@ window.pitchPresets = [
   { name: 'vB4', label: 'B-quarterflat', hz: 486.81, cents: 1075, category: 'eighthtone-48EDO', textColor: 'white', backgroundColor: 'green' },
   { name: 'vC4', label: 'C-quarterflat', hz: 515.76, cents: 1175, category: 'eighthtone-48EDO', textColor: 'white', backgroundColor: 'green' },
 
-
-
   { name: 'C♮^4', label: '', hz: 263.53, cents: 12.5, category: 'sixteenthtone-96EDO', textColor: 'white', backgroundColor: 'magenta' },
   { name: 'C+^4', label: '', hz: 271.25, cents: 62.5, category: 'sixteenthtone-96EDO', textColor: 'white', backgroundColor: 'magenta' },
   { name: 'C#v4', label: '', hz: 275.19, cents: 87.5, category: 'sixteenthtone-96EDO', textColor: 'white', backgroundColor: 'magenta' },
@@ -105,34 +103,33 @@ window.pitchPresets = [
   { name: 'B+v4/Cdv4', label: '', hz: 504.71, cents: 1137.5, category: 'sixteenthtone-96EDO', textColor: 'white', backgroundColor: 'magenta' },
   { name: 'B#v4/C♮v4', label: '', hz: 519.50, cents: 1187.5, category: 'sixteenthtone-96EDO', textColor: 'white', backgroundColor: 'magenta' },
 
-
-  { name: '/D4', label: '', hz: 300.53, cents: 240, category: 'diesis-5EDO', textColor: 'white', backgroundColor: 'blue' },
+  { name: '//D4', label: '', hz: 300.53, cents: 240, category: 'diesis-5EDO', textColor: 'white', backgroundColor: 'blue' },
   { name: '\\F4', label: '', hz: 345.22, cents: 480, category: 'diesis-5EDO', textColor: 'white', backgroundColor: 'blue' },
   { name: '/G4', label: '', hz: 396.56, cents: 720, category: 'diesis-5EDO', textColor: 'white', backgroundColor: 'blue' },
-  { name: '\\A#4', label: '', hz: 455.52, cents: 960, category: 'diesis-5EDO', textColor: 'black', backgroundColor: 'blue' },
+  { name: '\\\\A#4', label: '', hz: 455.52, cents: 960, category: 'diesis-5EDO', textColor: 'black', backgroundColor: 'blue' },
   
   { name: '/Db4', label: '', hz: 280.41, cents: 120, category: 'diesis-10EDO', textColor: 'black', backgroundColor: 'blue' },
-  { name: '\\E4', label: '', hz: 322.10, cents: 360, category: 'diesis-10EDO', textColor: 'white', backgroundColor: 'blue' },
-  { name: '/Ab4', label: '', hz: 425.02, cents: 840, category: 'diesis-10EDO', textColor: 'black', backgroundColor: 'blue' },
+  { name: '\\\\E4', label: '', hz: 322.10, cents: 360, category: 'diesis-10EDO', textColor: 'white', backgroundColor: 'blue' },
+  { name: '//Ab4', label: '', hz: 425.02, cents: 840, category: 'diesis-10EDO', textColor: 'black', backgroundColor: 'blue' },
   { name: '\\B4', label: '', hz: 487.72, cents: 1080, category: 'diesis-10EDO', textColor: 'white', backgroundColor: 'blue' },
 
   { name: '\\C#4', label: '', hz: 274.00, cents: 80, category: 'diesis-15EDO', textColor: 'black', backgroundColor: 'blue' },
-  { name: '\\D4', label: '', hz: 286.96, cents: 160, category: 'diesis-15EDO', textColor: 'white', backgroundColor: 'blue' },
+  { name: '\\\\D4', label: '', hz: 286.96, cents: 160, category: 'diesis-15EDO', textColor: 'white', backgroundColor: 'blue' },
   { name: '/Eb4', label: '', hz: 314.75, cents: 320, category: 'diesis-15EDO', textColor: 'black', backgroundColor: 'blue' },
-  { name: '\\F#4', label: '', hz: 361.55, cents: 560, category: 'diesis-15EDO', textColor: 'black', backgroundColor: 'blue' },
-  { name: '/Gb4', label: '', hz: 378.65, cents: 640, category: 'diesis-15EDO', textColor: 'black', backgroundColor: 'blue' },
+  { name: '\\\\F#4', label: '', hz: 361.55, cents: 560, category: 'diesis-15EDO', textColor: 'black', backgroundColor: 'blue' },
+  { name: '//Gb4', label: '', hz: 378.65, cents: 640, category: 'diesis-15EDO', textColor: 'black', backgroundColor: 'blue' },
   { name: '\\A4', label: '', hz: 434.95, cents: 880, category: 'diesis-15EDO', textColor: 'white', backgroundColor: 'blue' },
-  { name: '/Bb4', label: '', hz: 476.58, cents: 1040, category: 'diesis-15EDO', textColor: 'black', backgroundColor: 'blue' },
+  { name: '//Bb4', label: '', hz: 476.58, cents: 1040, category: 'diesis-15EDO', textColor: 'black', backgroundColor: 'blue' },
   { name: '/B4', label: '', hz: 499.11, cents: 1120, category: 'diesis-15EDO', textColor: 'white', backgroundColor: 'blue' },
 
-  { name: '/C4', label: '', hz: 267.75, cents: 40, category: 'diesis-30EDO', textColor: 'white', backgroundColor: 'blue' },
+  { name: '//C4', label: '', hz: 267.75, cents: 40, category: 'diesis-30EDO', textColor: 'white', backgroundColor: 'blue' },
   { name: '\\D#4', label: '', hz: 307.56, cents: 280, category: 'diesis-30EDO', textColor: 'black', backgroundColor: 'blue' },
-  { name: '/E4', label: '', hz: 337.34, cents: 440, category: 'diesis-30EDO', textColor: 'white', backgroundColor: 'blue' },
+  { name: '//E4', label: '', hz: 337.34, cents: 440, category: 'diesis-30EDO', textColor: 'white', backgroundColor: 'blue' },
   { name: '/F4', label: '', hz: 353.29, cents: 520, category: 'diesis-30EDO', textColor: 'white', backgroundColor: 'blue' },
   { name: '\\G4', label: '', hz: 387.50, cents: 680, category: 'diesis-30EDO', textColor: 'white', backgroundColor: 'blue' },
-  { name: '\\G#4', label: '', hz: 405.83, cents: 760, category: 'diesis-30EDO', textColor: 'black', backgroundColor: 'blue' },
+  { name: '\\\\G#4', label: '', hz: 405.83, cents: 760, category: 'diesis-30EDO', textColor: 'black', backgroundColor: 'blue' },
   { name: '/A4', label: '', hz: 445.12, cents: 920, category: 'diesis-30EDO', textColor: 'white', backgroundColor: 'blue' },
-  { name: '\\C4', label: '', hz: 510.78, cents: 1160, category: 'diesis-30EDO', textColor: 'white', backgroundColor: 'blue' },
+  { name: '\\\\C4', label: '', hz: 510.78, cents: 1160, category: 'diesis-30EDO', textColor: 'white', backgroundColor: 'blue' },
 
   { name: '', label: '', hz: 288.86, cents: 171.43, category: 'bohlen-pierce-7EDO', textColor: 'white', backgroundColor: 'chartreuse' },
   { name: '', label: '', hz: 318.93, cents: 342.86, category: 'bohlen-pierce-7EDO', textColor: 'white', backgroundColor: 'chartreuse' },
