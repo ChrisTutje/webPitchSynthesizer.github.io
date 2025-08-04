@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pitch Circle</title>
+  <link rel="stylesheet" href="CSS/styles.css" />
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: sans-serif;
+      background: #f4f4f4;
+    }
+    #mode-toggle {
+      margin: 1em;
+      font-size: 1rem;
+    }
+    #circle-container {
+      position: relative;
+      width: 90vmin;
+      height: 90vmin;
+      border-radius: 50%;
+    }
+    .pitch-point {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      padding: 0.3em 0.6em;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      text-align: center;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 1em; margin: 1em;">
+  <label>
+    Mode:
+    <select id="mode-toggle">
+      <option value="cents">Chromatic Circle</option>
+      <option value="degrees">Circle of Fifths</option>
+    </select>
+  </label>
+
+  <fieldset id="category-filters" style="display: flex; flex-wrap: wrap; gap: 0.5em; border: none;">
+    <!-- Checkboxes will be injected here -->
+  </fieldset>
+</div>
+
+  <div id="circle-container"></div>
+
+  <script src="JS/pitches.js"></script>
+  <script>
+  const container = document.getElementById('circle-container');
+  const modeToggle = document.getElementById('mode-toggle');
+  const categoryFilters = document.getElementById('category-filters');
+
+  const defaultCategories = new Set(['diatonic', 'chromatic']);
+
+  const getAllCategories = () => {
+    const categories = new Set();
+    pitchPresets.forEach(p => {
+      if (Array.isArray(p.category)) {
+        p.category.forEach(cat => categories.add(cat));
+      } else {
+        categories.add(p.category);
+      }
+    });
+    return [...categories];
+  };
+
+  const createCategoryFilters = () => {
+    const categories = getAllCategories();
+
+    categories.forEach(category => {
+      const id = `cat-${category}`;
+
+      const label = document.createElement('label');
+      label.htmlFor = id;
+      label.style.display = 'flex';
+      label.style.alignItems = 'center';
+      label.style.gap = '0.3em';
+
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.id = id;
+      checkbox.value = category;
+      checkbox.checked = defaultCategories.has(category);
+
+      checkbox.addEventListener('change', () => drawCircle(modeToggle.value));
+
+      label.appendChild(checkbox);
+      label.appendChild(document.createTextNode(category));
+
+      categoryFilters.appendChild(label);
+    });
+  };
+
+  const getSelectedCategories = () => {
+    return Array.from(categoryFilters.querySelectorAll('input[type="checkbox"]:checked'))
+      .map(cb => cb.value);
+  };
+
+  function drawCircle(mode = 'cents') {
+    container.innerHTML = '';
+    const radius = container.offsetWidth / 2;
+    const selectedCategories = new Set(getSelectedCategories());
+
+    pitchPresets.forEach(pitch => {
+      const categories = Array.isArray(pitch.category) ? pitch.category : [pitch.category];
+      const shouldDisplay = categories.some(cat => selectedCategories.has(cat));
+      if (!shouldDisplay) return;
+
+      const angleDeg = mode === 'cents'
+        ? (pitch.cents % 1200) * (360 / 1200)
+        : pitch.degrees % 360;
+
+      const angleRad = (angleDeg - 90) * (Math.PI / 180);
+
+      const x = radius + radius * 0.85 * Math.cos(angleRad);
+      const y = radius + radius * 0.85 * Math.sin(angleRad);
+
+      const el = document.createElement('div');
+      el.className = 'pitch-point';
+      el.textContent = pitch.name;
+      el.style.left = `${x}px`;
+      el.style.top = `${y}px`;
+      el.style.color = pitch.textColor;
+      el.style.backgroundColor = pitch.backgroundColor;
+
+      container.appendChild(el);
+    });
+  }
+
+  modeToggle.addEventListener('change', () => drawCircle(modeToggle.value));
+  window.addEventListener('resize', () => drawCircle(modeToggle.value));
+
+  createCategoryFilters();
+  drawCircle();
+</script>
+</body>
+</html>
