@@ -85,7 +85,7 @@ class OscillatorUnit {
       const option = document.createElement('option');
       option.value = pitch.hz;
       option.textContent = pitch.name;
-      option.dataset.category = pitch.category;
+      option.dataset.category = JSON.stringify(pitch.category);
       option.style.color = pitch.textColor;
       option.style.backgroundColor = pitch.backgroundColor;
       pitchDropdown.appendChild(option);
@@ -93,12 +93,17 @@ class OscillatorUnit {
 
     const categoryFilter = document.createElement('select');
     categoryFilter.appendChild(new Option('All Categories', ''));
-    [...new Set(pitchPresets.map(p => p.category))].forEach(cat => {
-      const opt = document.createElement('option');
-      opt.value = cat;
-      opt.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
-      categoryFilter.appendChild(opt);
-    });
+const allCats = new Set();
+pitchPresets.forEach(p => {
+  const cats = Array.isArray(p.category) ? p.category : [p.category];
+  cats.forEach(c => allCats.add(c));
+});
+[...allCats].forEach(cat => {
+  const opt = document.createElement('option');
+  opt.value = cat;
+  opt.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+  categoryFilter.appendChild(opt);
+});
 
     pitchContainer.appendChild(pitchDropdown);
     pitchContainer.appendChild(categoryFilter);
@@ -245,14 +250,19 @@ intervalPresets
       if (hz) updateFrequency(hz);
     });
 
-    categoryFilter.addEventListener('change', () => {
-      const selected = categoryFilter.value;
-      Array.from(pitchDropdown.options).forEach(opt => {
-        if (!opt.value) return;
-        const cat = opt.dataset.category;
-        opt.hidden = selected && cat !== selected;
-      });
-    });
+categoryFilter.addEventListener('change', () => {
+  const selected = categoryFilter.value;
+  Array.from(pitchDropdown.options).forEach(opt => {
+    if (!opt.value) return;
+    try {
+      const cats = JSON.parse(opt.dataset.category);
+      const matches = Array.isArray(cats) ? cats.includes(selected) : cats === selected;
+      opt.hidden = selected && !matches;
+    } catch {
+      opt.hidden = true; // fallback in case of bad JSON
+    }
+  });
+});
 
     intervalCategoryFilter.addEventListener('change', () => {
       const selected = intervalCategoryFilter.value;
