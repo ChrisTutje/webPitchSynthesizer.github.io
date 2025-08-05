@@ -1,17 +1,16 @@
 window.pitchPresets = [
-  { name: 'C♮4', label: 'C-natural', hz: 261.63, cents: 0, degrees: 0, category: ['diatonic', 'harmonic-series', 'subharmonic-series', 'just-intonation', 'Pythagorean-tuning', '1-EDO'], textColor: '#000000', backgroundColor: '#ffffff' },
+  { name: 'C♮4', label: 'C-natural', hz: 261.63, cents: 0, degrees: 0, category: ['harmonic-series', 'subharmonic-series', 'just-intonation', 'Pythagorean-tuning', '1-EDO', 'diatonic'], textColor: '#000000', backgroundColor: '#ffffff' },
+  { name: 'F♯4/G♭4', label: 'F-sharp/G-flat', hz: 369.99, degrees: 180, cents: 600, category: ['chromatic', '2-EDO'], textColor: '#ffffff', backgroundColor: '#000000' },
   { name: 'E♮4', label: 'E-natural', hz: 329.63, cents: 400, degrees: 120, category: ['diatonic', '3-EDO'], textColor: '#000000', backgroundColor: '#ffffff' },
+  { name: 'G♯4/A♭4', label: 'G-sharp/A-flat', hz: 415.30, degrees: 240, cents: 800, category: ['chromatic', '3-EDO'], textColor: '#ffffff', backgroundColor: '#000000' },
   { name: 'A♮4', label: 'A-natural', hz: 440.00, cents: 900, degrees: 90, category: ['diatonic', '4-EDO'], textColor: '#000000', backgroundColor: '#ffffff' },
   { name: 'D♮4', label: 'D-natural', hz: 293.66, cents: 200, degrees: 60, category: ['diatonic', '6-EDO'], textColor: '#000000', backgroundColor: '#ffffff' },
-  { name: 'F♮4', label: 'F-natural', hz: 349.23, cents: 500, degrees: 330, category: ['diatonic', '12-EDO'], textColor: '#000000', backgroundColor: '#ffffff' },
-  { name: 'G♮4', label: 'G-natural', hz: 392.00, cents: 700, degrees: 30, category: ['diatonic', '12-EDO'], textColor: '#000000', backgroundColor: '#ffffff' },
-  { name: 'B♮4', label: 'B-natural', hz: 493.88, cents: 1100, degrees: 150, category: ['diatonic', '12-EDO'], textColor: '#000000', backgroundColor: '#ffffff' },
-
-  { name: 'F♯4/G♭4', label: 'F-sharp/G-flat', hz: 369.99, degrees: 180, cents: 600, category: ['chromatic', '2-EDO'], textColor: '#ffffff', backgroundColor: '#000000' },
-  { name: 'G♯4/A♭4', label: 'G-sharp/A-flat', hz: 415.30, degrees: 240, cents: 800, category: ['chromatic', '3-EDO'], textColor: '#ffffff', backgroundColor: '#000000' },
   { name: 'D♯4/E♭4', label: 'D-sharp/E-flat', hz: 311.13, degrees: 270, cents: 300, category: ['chromatic', '4-EDO'], textColor: '#ffffff', backgroundColor: '#000000' },
   { name: 'A♯4/B♭4', label: 'A-sharp/B-flat', hz: 466.16, degrees: 300, cents: 1000, category: ['chromatic', '6-EDO'], textColor: '#ffffff', backgroundColor: '#000000' },
   { name: 'C♯4/D♭4', label: 'C-sharp/D-flat', hz: 277.18, degrees: 210, cents: 100, category: ['chromatic', '12-EDO'], textColor: '#ffffff', backgroundColor: '#000000' },
+  { name: 'F♮4', label: 'F-natural', hz: 349.23, cents: 500, degrees: 330, category: ['diatonic', '12-EDO'], textColor: '#000000', backgroundColor: '#ffffff' },
+  { name: 'G♮4', label: 'G-natural', hz: 392.00, cents: 700, degrees: 30, category: ['diatonic', '12-EDO'], textColor: '#000000', backgroundColor: '#ffffff' },
+  { name: 'B♮4', label: 'B-natural', hz: 493.88, cents: 1100, degrees: 150, category: ['diatonic', '12-EDO'], textColor: '#000000', backgroundColor: '#ffffff' },
 
   { name: 'Dd4', label: 'C-sesquisharp/D-halflat', hz: 285.30, cents: 150, degrees: 315, category: ['neutral-tone', '8-EDO'], textColor: '#808080', backgroundColor: '#ff0000' },
   { name: 'Bd4', label: 'A-sesquisharp/B-halflat', hz: 479.82, cents: 1050, degrees: 45, category: ['neutral-tone', '8-EDO'], textColor: '#808080', backgroundColor: '#ff0000' },
@@ -236,4 +235,17 @@ window.pitchPresets = [
   { name: '', label: '', hz: 478.29, cents: 1044.44, category: ['Limman', '54-EDO'], textColor: '#ffffff', backgroundColor: '#FF8000' },
   { name: '', label: '', hz: 490.73, cents: 1088.89, category: ['Limman', '54-EDO'], textColor: '#ffffff', backgroundColor: '#FF8000' },
   { name: '', label: '', hz: 516.59, cents: 1177.78, category: ['Limman', '54-EDO'], textColor: '#ffffff', backgroundColor: '#FF8000' },
+
+  { name: 'C#4/Db4', label: 'C-sharp/D-flat', hz: 279.07, cents: 111.7, degrees: 0, category: ['just-intonation'], textColor: '#ffffff', backgroundColor: '#808000' },
+  { name: 'D4', label: 'D', hz: 294.33, cents: 203.0, degrees: 0, category: ['just-intonation', 'harmonic-series'], textColor: '#000000', backgroundColor: '#808000' },
+  { name: 'D#4/Eb4', label: 'D-sharp/E-flat', hz: 313.96, cents: 315.6, degrees: 0, category: ['just-intonation'], textColor: '#ffffff', backgroundColor: '#808000' },
+  { name: 'E4', label: 'E', hz: 327.04, cents: 386.3, degrees: 0, category: ['just-intonation', 'harmonic-series'], textColor: '#000000', backgroundColor: '#808000' },
+  { name: 'F4', label: 'F', hz: 348.84, cents: 498.0, degrees: 0, category: ['just-intonation', 'subharmonic-series'], textColor: '#000000', backgroundColor: '#808000' },
+  { name: 'G4', label: 'G', hz: 392.45, cents: 701.9, degrees: 0, category: ['just-intonation', 'harmonic-series'], textColor: '#000000', backgroundColor: '#808000' },
+  { name: 'G#4/Ab4', label: 'G#/Ab', hz: 418.61, cents: 813.7, degrees: 0, category: ['just-intonation', 'subharmonic-series'], textColor: '#ffffff', backgroundColor: '#808000' },
+  { name: 'A4', label: 'A', hz: 436.05, cents: 884.4, degrees: 0, category: ['just-intonation'], textColor: '#000000', backgroundColor: '#808000' },
+  { name: 'A#4/Bb4', label: 'A#/Bb', hz: 470.93, cents: 1017.6, degrees: 0, category: ['just-intonation'], textColor: '#ffffff', backgroundColor: '#808000' },
+  { name: 'B', label: 'B', hz: 490.56, cents: 1088.3, degrees: 0, category: ['just-intonation', 'harmonic-series'], textColor: '#000000', backgroundColor: '#808000' },
+
+  // { name: '', label: '', hz: 457.85, cents: 0, degrees: 0, category: ['harmonic-series'], textColor: '#000000', backgroundColor: '#808000' },
 ];
